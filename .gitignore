@@ -1,3 +1,5 @@
 submit
 img
 env
+__pycache__
+*.pyc

@@ -14,7 +14,7 @@ def get_update_data(start = "01/01/2000", end = "01/07/2023"):
     if end > prev_day:
         end = prev_day
 
-    print(start, end)
+    # print(start, end)
 
     infy_df = get_data("INFY.NS", start_date=start, end_date=end, index_as_date=True, interval="1d")
 
@@ -51,7 +51,7 @@ def predict_price(modeltype, data, interval=1):
         data.iloc[-1:, 0] = predict[-1:]/scaler.scale_[0]
 
         interval -= 1
-    print(data.tail())
+    # print(data.tail())
     return data[-100:]
 
 

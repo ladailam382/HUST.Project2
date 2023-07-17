@@ -38,7 +38,7 @@ def relative_strength_idx(df, n=14):
 def get_technical_indicators(dataset):
     n = dataset.shape[0]//500 + 1
     dataset = dataset.loc[::n]
-    print(len(dataset))
+    # print(len(dataset))
     # Create 7 and 21 days Moving Average
     dataset['EMA_9'] = dataset['close'].ewm(9).mean().shift()
     dataset['SMA_5'] = dataset['close'].rolling(5).mean().shift()
@@ -73,7 +73,7 @@ def get_technical_indicators(dataset):
         temp['value'] = dataset[i]
         temp['type'] = i
         final = pd.concat([final, temp])
-    print(final.tail())
+    # print(final.tail())
     return final
 
 

@@ -22,14 +22,14 @@ interval_list = ['1 day', '1 week', '1 month']
 
 def change_month(year, month):
     if month in month30_list:
-        return gr.update(value=day_list[:-1])
+        return gr.update(choices=day_list[:-1], value=day_list[0])
     elif month in month31_list:
-        return gr.update(value=day_list)
+        return gr.update(choices=day_list, value=day_list[0])
     else:
         if int(year)%4 == 0:
-            return gr.update(value=day_list[:-2])
+            return gr.update(choices=day_list[:-2], value=day_list[0])
         else:
-            return gr.update(value=day_list[:-3])
+            return gr.update(choices=day_list[:-3], value=day_list[0])
 
 
 def predict(sd, sm, sy, ed, em, ey, m, interval):
@@ -98,7 +98,7 @@ def line_plot_fn(start_date='01/01/2000', end_date='01/01/2023'):
     )
 
 
-with gr.Blocks() as app:
+with gr.Blocks(title="Stock Price Prediction") as app:
     with gr.Row():
         start_year = gr.Dropdown(choices=year_list, value=year_list[0], label="Start Year")
         end_year = gr.Dropdown(choices=year_list, value=year_list[-1], label="End Year")
